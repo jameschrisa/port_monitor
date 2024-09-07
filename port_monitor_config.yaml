@@ -1,0 +1,65 @@
+# Port Monitor Configuration
+
+ports_to_monitor:
+  - 21
+  - 22
+  - 23
+  - 25
+  - 53
+  - 80
+  - 110
+  - 135
+  - 139
+  - 443
+  - 445
+  - 1433
+  - 3306
+  - 3389
+
+monitoring:
+  check_interval: 60  # seconds
+  alert_threshold: 5  # connections per hour
+
+alerts:
+  email:
+    enabled: false
+    smtp_server: smtp.example.com
+    smtp_port: 587
+    username: your_email@example.com
+    password: your_password
+    from_email: your_email@example.com
+    to_email: admin@example.com
+
+  webhook:
+    enabled: false
+    url: https://webhook.example.com/endpoint
+
+  slack:
+    enabled: false
+    webhook_url: https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX
+
+  telegram:
+    enabled: false
+    bot_token: your_bot_token
+    chat_id: your_chat_id
+
+  pagerduty:
+    enabled: false
+    integration_key: your_pagerduty_integration_key
+
+logging:
+  file: port_monitor.log
+  level: INFO
+
+export:
+  enabled: false
+  file: connection_history.csv
+
+rate_limiting:
+  max_alerts_per_hour: 10
+
+alert_levels:
+  warning:
+    threshold: 5
+  critical:
+    threshold: 10
