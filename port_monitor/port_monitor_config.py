@@ -36,11 +36,24 @@ def get_bool_input(prompt, default=None):
         print("Please enter 'y' or 'n'.")
 
 def configure_ports(config):
-    ports = config.get('ports_to_monitor', [21, 22, 23, 25, 53, 80, 110, 135, 139, 443, 445, 1433, 3306, 3389])
-    print("Current ports to monitor:", ports)
+    default_ports = [21, 22, 23, 25, 53, 80, 110, 135, 139, 443, 445, 1433, 3306, 3389]
+    current_ports = config.get('ports_to_monitor', default_ports)
+    print("Current ports to monitor:", current_ports)
+    
     if get_bool_input("Do you want to modify the list of ports to monitor?"):
-        new_ports = input("Enter the ports to monitor (comma-separated): ").split(',')
-        config['ports_to_monitor'] = [int(port.strip()) for port in new_ports]
+        new_ports_input = input("Enter the ports to monitor (comma-separated), or press Enter to keep current ports: ").strip()
+        if new_ports_input:
+            new_ports = [int(port.strip()) for port in new_ports_input.split(',') if port.strip()]
+            if new_ports:
+                config['ports_to_monitor'] = new_ports
+            else:
+                print("No valid ports entered. Keeping current ports.")
+        else:
+            print("Keeping current ports.")
+    else:
+        config['ports_to_monitor'] = current_ports
+    
+    print("Ports to monitor:", config['ports_to_monitor'])
 
 def configure_monitoring(config):
     monitoring = config.get('monitoring', {})

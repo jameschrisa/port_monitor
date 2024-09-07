@@ -1,0 +1,32 @@
+alert_levels:
+  critical:
+    threshold: 2
+  warning:
+    threshold: 2
+alerts:
+  email:
+    enabled: true
+    from_email: james@signetscience.com
+    password: '#5unnyNLA!'
+    smtp_port: 587
+    smtp_server: smtp.signetscience.com
+    to_email: jchrisa@me.com
+    username: james@signetscience.com
+  pagerduty:
+    enabled: false
+  slack:
+    enabled: false
+  telegram:
+    enabled: false
+  webhook:
+    enabled: false
+export:
+  enabled: false
+logging:
+  file: templog.log
+  level: INFO
+monitoring:
+  alert_threshold: 5
+  check_interval: 60
+rate_limiting:
+  max_alerts_per_hour: 5
