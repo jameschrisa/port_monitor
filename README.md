@@ -20,7 +20,7 @@ Port Monitor is a configurable tool for monitoring network ports and sending ale
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/port_monitor.git
+git clone https://github.com/jameschrisa/port_monitor.git
 cd port_monitor
 ```
 
@@ -167,6 +167,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
-
-Project Link: [https://github.com/yourusername/port_monitor](https://github.com/yourusername/port_monitor)
+Project Link: [https://github.com/jameschrisa/port_monitor](https://github.com/yourusername/port_monitor)
