@@ -1,4 +1,5 @@
-# Port Monitor
+![portmon](./portmon.png "portmon")
+# SIEM Port Monitor Lite
 
 Port Monitor is a configurable tool for monitoring network ports and sending alerts through various channels. It provides a flexible solution for system administrators and network security professionals to keep track of port activity and receive timely notifications.
 
@@ -146,15 +147,84 @@ After making changes:
 - For permission issues, you may need to use `sudo` on Unix-based systems or run as administrator on Windows.
 - If you encounter import errors, make sure the `__init__.py` file exists in the `port_monitor` directory.
 
+If you encounter issues during installation or usage of Port Monitor, try the following steps:
+
+### Installation Issues
+
+1. **Upgrade pip**: 
+   Ensure you have the latest version of pip:
+   ```
+   python -m pip install --upgrade pip
+   ```
+
+2. **Install Cython**:
+   Some dependencies might require Cython. Install it before proceeding:
+   ```
+   pip install Cython
+   ```
+
+3. **Use pre-built wheels**:
+   If building from source fails, try using pre-built wheels:
+   ```
+   pip install --only-binary=:all: PyYAML
+   pip install .
+   ```
+
+4. **Install PyYAML without Cython**:
+   If PyYAML is causing issues, try installing it without Cython:
+   ```
+   PYYAML_FORCE_LIBYAML=1 pip install PyYAML
+   pip install .
+   ```
+
+5. **Check Python compatibility**:
+   Ensure your Python version is compatible with the package requirements. This project supports Python 3.6+.
+
+6. **Install build tools**:
+   On macOS, you might need to install Xcode Command Line Tools:
+   ```
+   xcode-select --install
+   ```
+
+7. **Use editable mode**:
+   For development, try installing in editable mode with verbose output:
+   ```
+   pip install -e . -v
+   ```
+
+### Dependency Conflicts
+
+If you encounter dependency conflicts, try the following:
+
+1. Check your installed packages:
+   ```
+   pip list
+   ```
+
+2. Ensure the versions in `requirements.txt` and `setup.py` are compatible with your installed packages.
+
+3. If needed, update the version requirements to be more flexible. For example, change:
+   ```
+   PyYAML==5.4.1
+   ```
+   to
+   ```
+   PyYAML>=5.4.1
+   ```
+
+### Still Having Issues?
+
+If you're still experiencing problems after trying these steps, please open an issue on the GitHub repository with the following information:
+
+1. Your Python version (`python --version`)
+2. Your pip version (`pip --version`)
+3. The content of your `pip list` output
+4. The full error message you're encountering
+5. The contents of your `setup.py` and `requirements.txt` files
+
+This information will help in diagnosing and resolving the issue more quickly.
+
 ## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## License
 
